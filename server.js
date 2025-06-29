@@ -16,9 +16,9 @@ app.use(bodyParser.json());
 
 // Rota C2B
 app.post('/c2b', async (req, res) => {
-  const { amount, phoneNumber, reference } = req.body;
+  const { amount, phone, reference } = req.body;
 
-  if (!amount || !phoneNumber || !reference) {
+  if (!amount || !phone || !reference) {
     return res.status(400).json({ error: 'Parâmetros obrigatórios faltando' });
   }
 
@@ -27,7 +27,7 @@ app.post('/c2b', async (req, res) => {
   const payload = {
     client_id: "9f460dd8-8913-4209-af26-42bdb6d1d188",  // Seu client_id
     amount: amount,
-    phone: phoneNumber,
+    phone: phone,
     reference: reference
   };
 
